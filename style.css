@@ -83,7 +83,56 @@ button:hover {
 }
 
 @media (min-width: 768px) {
-  .button-56 {
+  button {
     padding: 0 40px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  section {
+    margin-top: 10px;
+    max-width: 260px;
+    height: 10px;
+    min-height: 590px;
+    max-height: 590px;
+    padding: 5px;
+    padding-top: 30px;
+  }
+  #question-title-container {
+    margin: auto;
+    margin-top: 60px;
+    max-width: 220px;
+    width: 200px;
+    font-size: 8px;
+    min-height: 90px;
+    max-height: 500px;
+    text-align: center;
+    vertical-align: middle;
+    border-radius: 20px;
+    background-color: rgb(77, 69, 93);
+    font-family: "Courier New", Courier, monospace;
+    color: white;
+    /* line-height: 20px; */
+    padding: 10px;
+    margin-bottom: 40px;
+    /* display: inline-block; */
+  }
+  button {
+    margin-top: 30px;
+    font-size: 10px;
+    line-height: 10px;
+    font-weight: bold;
+  }
+  #start-text {
+    margin-top: 150px;
+  }
+  #start-quiz-button {
+    margin-top: 75px;
+  }
+  #score-screen-text {
+    margin-top: 150px;
+  }
+  #try-again-button {
+    margin-top: 75px;
   }
 }
