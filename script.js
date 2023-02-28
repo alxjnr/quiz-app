@@ -42,6 +42,7 @@ easyButton.addEventListener("click", () => {
 mediumButton.addEventListener("click", () => {
   quizArray = [];
   isDifficultySelected = true;
+  selectedDifficulty = "medium";
   generateQuizQuestions("medium").then(() => {
     loadQuestion();
   });
@@ -50,27 +51,53 @@ mediumButton.addEventListener("click", () => {
 hardButton.addEventListener("click", () => {
   quizArray = [];
   isDifficultySelected = true;
+  selectedDifficulty = "hard";
   generateQuizQuestions("hard").then(() => {
     loadQuestion();
   });
 });
 
+mixed.addEventListener("click", () => {
+  quizArray = [];
+  isDifficultySelected = true;
+  selectedDifficulty = "mixed";
+  generateQuizQuestions("mixed").then(() => {
+    loadQuestion();
+  });
+});
+
 function generateQuizQuestions(difficulty = "easy") {
-  return fetch(
-    `https://the-trivia-api.com/api/questions?difficulty=${difficulty}`
-  )
-    .then((res) => res.json())
-    .then((data) => {
-      data.forEach((obj) => {
-        quizArray.push([
-          obj.question,
-          obj.incorrectAnswers[0],
-          obj.incorrectAnswers[1],
-          obj.incorrectAnswers[2],
-          obj.correctAnswer,
-        ]);
+  if (difficulty === "mixed") {
+    return fetch(`https://the-trivia-api.com/api/questions`)
+      .then((res) => res.json())
+      .then((data) => {
+        data.forEach((obj) => {
+          quizArray.push([
+            obj.question,
+            obj.incorrectAnswers[0],
+            obj.incorrectAnswers[1],
+            obj.incorrectAnswers[2],
+            obj.correctAnswer,
+          ]);
+        });
       });
-    });
+  } else {
+    return fetch(
+      `https://the-trivia-api.com/api/questions?difficulty=${difficulty}`
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        data.forEach((obj) => {
+          quizArray.push([
+            obj.question,
+            obj.incorrectAnswers[0],
+            obj.incorrectAnswers[1],
+            obj.incorrectAnswers[2],
+            obj.correctAnswer,
+          ]);
+        });
+      });
+  }
 }
 
 function quizHome(currentQuestion) {
@@ -82,10 +109,12 @@ function quizHome(currentQuestion) {
   container.appendChild(easyButton);
   container.appendChild(mediumButton);
   container.appendChild(hardButton);
+  container.appendChild(mixed);
 
   easyButton.innerText = "easy";
   mediumButton.innerText = "medium";
   hardButton.innerText = "hard";
+  mixed.innerText = "mixed";
   text.innerText = "select a difficulty to begin the quiz";
 
   container.setAttribute("id", "main-content-box");
