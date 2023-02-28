@@ -82,6 +82,10 @@ button:hover {
   outline: 0;
 }
 
+#difficulty-text {
+  margin-top: 100px;
+}
+
 @media (min-width: 768px) {
   button {
     padding: 0 40px;
@@ -129,7 +133,7 @@ button:hover {
   }
   #start-text {
     padding: 5px;
-    margin-top: 200px;
+    margin-top: 50px;
   }
   #start-quiz-button {
     margin-top: 75px;
