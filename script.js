@@ -8,13 +8,14 @@ const easyButton = document.createElement("button");
 const mediumButton = document.createElement("button");
 const hardButton = document.createElement("button");
 const homeButton = document.createElement("button");
+const mixed = document.createElement("button");
 
 let quizArray = [];
 let score = 0;
 let currentQuestion = 0;
 let isDifficultySelected = false;
 let selectedDifficulty;
-const questionTimeout = 2500;
+const questionTimeout = 1800;
 
 tryAgain.addEventListener("click", () => {
   quizArray = [];
@@ -32,37 +33,26 @@ homeButton.addEventListener("click", () => {
 easyButton.addEventListener("click", () => {
   quizArray = [];
   isDifficultySelected = true;
-  const difficultyText = document.getElementById("difficulty-text");
-  difficultyText.style.color = "white";
-  easyButton.style.color = "green";
-  mediumButton.style.color = "black";
-  hardButton.style.color = "black";
   selectedDifficulty = "easy";
-  generateQuizQuestions("easy");
+  generateQuizQuestions("easy").then(() => {
+    loadQuestion();
+  });
 });
 
 mediumButton.addEventListener("click", () => {
   quizArray = [];
   isDifficultySelected = true;
-  const difficultyText = document.getElementById("difficulty-text");
-  difficultyText.style.color = "white";
-  mediumButton.style.color = "green";
-  easyButton.style.color = "black";
-  hardButton.style.color = "black";
-  selectedDifficulty = "medium";
-  generateQuizQuestions("medium");
+  generateQuizQuestions("medium").then(() => {
+    loadQuestion();
+  });
 });
 
 hardButton.addEventListener("click", () => {
   quizArray = [];
   isDifficultySelected = true;
-  const difficultyText = document.getElementById("difficulty-text");
-  difficultyText.style.color = "white";
-  hardButton.style.color = "green";
-  easyButton.style.color = "black";
-  mediumButton.style.color = "black";
-  selectedDifficulty = "hard";
-  generateQuizQuestions("hard");
+  generateQuizQuestions("hard").then(() => {
+    loadQuestion();
+  });
 });
 
 function generateQuizQuestions(difficulty = "easy") {
@@ -80,31 +70,23 @@ function generateQuizQuestions(difficulty = "easy") {
           obj.correctAnswer,
         ]);
       });
-      console.log(quizArray);
     });
 }
 
 function quizHome(currentQuestion) {
-  const difficultyText = document.createElement("h2");
   const container = document.createElement("section");
   const text = document.createElement("h2");
 
   document.body.appendChild(container);
   container.appendChild(text);
-  container.appendChild(startQuizButton);
-  container.appendChild(difficultyText);
   container.appendChild(easyButton);
   container.appendChild(mediumButton);
   container.appendChild(hardButton);
 
-  difficultyText.setAttribute("id", "difficulty-text");
-  difficultyText.innerText = "select a difficulty";
   easyButton.innerText = "easy";
   mediumButton.innerText = "medium";
   hardButton.innerText = "hard";
-
-  text.innerText = "press start to begin the quiz";
-  startQuizButton.innerText = "start";
+  text.innerText = "select a difficulty to begin the quiz";
 
   container.setAttribute("id", "main-content-box");
   text.setAttribute("id", "start-text");
@@ -155,8 +137,6 @@ function loadQuestion() {
 
     const shuffledIndex = shuffleArray([1, 2, 3, 4]);
 
-    console.log(shuffledIndex);
-
     text.innerText = quizArray[currentQuestion][0];
     answerOne.innerText = quizArray[currentQuestion][shuffledIndex[0]];
     answerTwo.innerText = quizArray[currentQuestion][shuffledIndex[1]];
@@ -194,6 +174,11 @@ function scoreScreen() {
 
 answerOne.addEventListener("click", () => {
   if (answerOne.innerText === quizArray[currentQuestion][4]) {
+    confetti({
+      particleCount: 50,
+      spread: 70,
+      origin: { y: 0.9 },
+    });
     score++;
     answerOne.style.backgroundColor = "lightgreen";
   } else {
@@ -217,7 +202,6 @@ answerOne.addEventListener("click", () => {
   answerThree.disabled = true;
   answerFour.disabled = true;
 
-  console.log("test");
   currentQuestion++;
   setTimeout(loadQuestion, questionTimeout);
 });
@@ -227,6 +211,11 @@ answerTwo.addEventListener("click", () => {
     answerOne.style.backgroundColor = "lightgreen";
   }
   if (answerTwo.innerText === quizArray[currentQuestion][4]) {
+    confetti({
+      particleCount: 50,
+      spread: 70,
+      origin: { y: 0.9 },
+    });
     score++;
     answerTwo.style.backgroundColor = "lightgreen";
   } else {
@@ -246,7 +235,6 @@ answerTwo.addEventListener("click", () => {
   answerThree.disabled = true;
   answerFour.disabled = true;
 
-  console.log(score);
   currentQuestion++;
   setTimeout(loadQuestion, questionTimeout);
 });
@@ -260,6 +248,11 @@ answerThree.addEventListener("click", () => {
   }
 
   if (answerThree.innerText === quizArray[currentQuestion][4]) {
+    confetti({
+      particleCount: 50,
+      spread: 70,
+      origin: { y: 0.9 },
+    });
     score++;
     answerThree.style.backgroundColor = "lightgreen";
   } else {
@@ -275,7 +268,6 @@ answerThree.addEventListener("click", () => {
   answerThree.disabled = true;
   answerFour.disabled = true;
 
-  console.log(score);
   currentQuestion++;
   setTimeout(loadQuestion, questionTimeout);
 });
@@ -293,6 +285,11 @@ answerFour.addEventListener("click", () => {
   }
 
   if (answerFour.innerText === quizArray[currentQuestion][4]) {
+    confetti({
+      particleCount: 50,
+      spread: 70,
+      origin: { y: 0.9 },
+    });
     score++;
     answerFour.style.backgroundColor = "lightgreen";
   } else {
@@ -304,7 +301,6 @@ answerFour.addEventListener("click", () => {
   answerThree.disabled = true;
   answerFour.disabled = true;
 
-  console.log(score);
   currentQuestion++;
   setTimeout(loadQuestion, questionTimeout);
 });
