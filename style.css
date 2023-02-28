@@ -90,21 +90,21 @@ button:hover {
 
 @media only screen and (max-width: 480px) {
   section {
-    margin-top: 10px;
-    max-width: 260px;
+    margin-top: 30px;
+    max-width: 350px;
     height: 10px;
-    min-height: 590px;
-    max-height: 590px;
+    min-height: 750px;
+    max-height: 600px;
     padding: 5px;
     padding-top: 30px;
   }
   #question-title-container {
     margin: auto;
-    margin-top: 60px;
-    max-width: 220px;
-    width: 200px;
-    font-size: 8px;
-    min-height: 90px;
+    margin-top: 80px;
+    max-width: 300px;
+    width: 300px;
+    font-size: 10px;
+    min-height: 100px;
     max-height: 500px;
     text-align: center;
     vertical-align: middle;
@@ -112,25 +112,27 @@ button:hover {
     background-color: rgb(77, 69, 93);
     font-family: "Courier New", Courier, monospace;
     color: white;
-    /* line-height: 20px; */
-    padding: 10px;
-    margin-bottom: 40px;
-    /* display: inline-block; */
+    line-height: 20px;
+    padding: 15px;
+    margin-bottom: 20px;
+    display: inline-block;
   }
   button {
-    margin-top: 30px;
+    margin-top: 50px;
     font-size: 10px;
     line-height: 10px;
     font-weight: bold;
   }
   #start-text {
-    margin-top: 150px;
+    padding: 5px;
+    margin-top: 200px;
   }
   #start-quiz-button {
     margin-top: 75px;
   }
   #score-screen-text {
-    margin-top: 150px;
+    padding: 5px;
+    margin-top: 200px;
   }
   #try-again-button {
     margin-top: 75px;
