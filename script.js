@@ -47,6 +47,8 @@ function quizHome(currentQuestion) {
   startQuizButton.innerText = "start";
 
   container.setAttribute("id", "main-content-box");
+  text.setAttribute("id", "start-text");
+  startQuizButton.setAttribute("id", "start-quiz-button");
 }
 
 startQuizButton.addEventListener("click", () => {
@@ -108,6 +110,8 @@ function scoreScreen() {
   tryAgain.innerText = "try again";
 
   container.setAttribute("id", "main-content-box");
+  text.setAttribute("id", "score-screen-text");
+  tryAgain.setAttribute("id", "try-again-button");
 }
 
 answerOne.addEventListener("click", () => {
