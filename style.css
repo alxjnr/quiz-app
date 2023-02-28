@@ -88,7 +88,7 @@ button:hover {
   }
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 480px) {
   section {
     margin-top: 10px;
     max-width: 260px;
