@@ -90,8 +90,11 @@ button:hover {
 
 @media only screen and (max-width: 500px) {
   section {
+    margin: auto;
     margin-top: 30px;
-    max-width: 350px;
+    /* max-width: 350px; */
+    margin-right: 6%;
+    max-width: 85vw;
     height: 10px;
     min-height: 750px;
     max-height: 600px;
@@ -116,6 +119,7 @@ button:hover {
     padding: 15px;
     margin-bottom: 20px;
     display: inline-block;
+    overflow: scroll;
   }
   button {
     margin-top: 50px;
